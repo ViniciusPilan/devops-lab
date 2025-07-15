@@ -1,0 +1,101 @@
+[
+    {
+        "code": "bbas3",
+        "name": "Banco do Brasil",
+        "price": "R$ 21,14",
+        "P/L": "-16,13%",
+        "P/VP": "0,67",
+        "DY (ano)": "11,19%",
+        "ROE": "11,97%",
+        "margem liquida": "7,81%",
+        "date": "2025-07-13T10:45:46.338938"
+    },
+    {
+        "code": "itub4",
+        "name": "Banco Itau Unibanco",
+        "price": "R$ 34,98",
+        "P/L": "23,80%",
+        "P/VP": "1,88",
+        "DY (ano)": "7,76%",
+        "ROE": "20,77%",
+        "margem liquida": "11,84%",
+        "date": "2025-07-13T10:45:47.669901"
+    },
+    {
+        "code": "bbdc4",
+        "name": "Banco Bradesco",
+        "price": "R$ 16,05",
+        "P/L": "37,17%",
+        "P/VP": "1,00",
+        "DY (ano)": "7,77%",
+        "ROE": "10,99%",
+        "margem liquida": "8,49%",
+        "date": "2025-07-13T10:45:48.467405"
+    },
+    {
+        "code": "sanb11",
+        "name": "BANCO SANTANDER",
+        "price": "R$ 27,75",
+        "P/L": "1,62%",
+        "P/VP": "1,17",
+        "DY (ano)": "5,80%",
+        "ROE": "15,84%",
+        "margem liquida": "9,93%",
+        "date": "2025-07-13T10:45:49.528781"
+    },
+    {
+        "code": "abcb4",
+        "name": "BANCO ABC BRASIL",
+        "price": "R$ 21,02",
+        "P/L": "-6,03%",
+        "P/VP": "0,79",
+        "DY (ano)": "9,26%",
+        "ROE": "16,13%",
+        "margem liquida": "10,20%",
+        "date": "2025-07-13T10:45:50.460213"
+    },
+    {
+        "code": "bmgb4",
+        "name": "BANCO BMG S.A",
+        "price": "R$ 3,63",
+        "P/L": "10,89%",
+        "P/VP": "0,48",
+        "DY (ano)": "10,63%",
+        "ROE": "6,53%",
+        "margem liquida": "3,17%",
+        "date": "2025-07-13T10:45:51.249741"
+    },
+    {
+        "code": "brsr6",
+        "name": "BANCO BANRISUL",
+        "price": "R$ 11,18",
+        "P/L": "1,70%",
+        "P/VP": "0,43",
+        "DY (ano)": "9,76%",
+        "ROE": "7,26%",
+        "margem liquida": "4,30%",
+        "date": "2025-07-13T10:45:51.981767"
+    },
+    {
+        "code": "bpac11",
+        "name": "BANCO BTG PACTUAL",
+        "price": "R$ 40,83",
+        "P/L": "26,68%",
+        "P/VP": "2,62",
+        "DY (ano)": "1,11%",
+        "ROE": "20,45%",
+        "margem liquida": "27,80%",
+        "date": "2025-07-13T10:45:52.741895"
+    },
+    {
+        "code": "bpan4",
+        "name": "BANCO PAN",
+        "price": "R$ 7,43",
+        "P/L": "-12,79%",
+        "P/VP": "1,26",
+        "DY (ano)": "3,26%",
+        "ROE": "9,61%",
+        "margem liquida": "4,78%",
+        "date": "2025-07-13T10:45:53.456258"
+    }
+]
