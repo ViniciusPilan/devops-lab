@@ -20,10 +20,10 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  source:
-    path: /ops/minio
-    repoURL: https://github.com/ViniciusPilan/devops-lab
-    targetRevision: main
+  sources:
+    - path: ops/minio
+      repoURL: https://github.com/ViniciusPilan/devops-lab.git
+      targetRevision: main
   destination:
     name: "in-cluster"
     namespace: minio
