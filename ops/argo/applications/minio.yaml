@@ -21,9 +21,9 @@ metadata:
 spec:
   project: default
   source:
-    chart: operator
-    repoURL: https://operator.min.io
-    targetRevision: 7.1.1
+    path: /ops/minio
+    repoURL: https://github.com/ViniciusPilan/devops-lab
+    targetRevision: main
   destination:
     name: "in-cluster"
     namespace: minio
