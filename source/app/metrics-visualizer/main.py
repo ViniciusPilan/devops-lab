@@ -5,20 +5,21 @@ import streamlit as st
 import pandas as pd
 
 
-BUCKET_HOST = os.getenv("BUCKET_HOST")
-ACCESS_KEY_ID = os.getenv("ACCESS_KEY_ID")
-SECRET_ACCESS_KEY = os.getenv("SECRET_ACCESS_KEY")
+# TO DO: This part of code should be in a inintContainer
+# BUCKET_HOST = os.getenv("BUCKET_HOST")
+# ACCESS_KEY_ID = os.getenv("ACCESS_KEY_ID")
+# SECRET_ACCESS_KEY = os.getenv("SECRET_ACCESS_KEY")
 
 
-# Create client with access key and secret key with specific region.
-client = Minio(
-    BUCKET_HOST,
-    access_key=ACCESS_KEY_ID,
-    secret_key=SECRET_ACCESS_KEY,
-    secure=False
-)
+# # Create client with access key and secret key with specific region.
+# client = Minio(
+#     BUCKET_HOST,
+#     access_key=ACCESS_KEY_ID,
+#     secret_key=SECRET_ACCESS_KEY,
+#     secure=False
+# )
 
-client.fget_object("app", "metrics.csv", "metrics.csv")
+# client.fget_object("app", "metrics.csv", "metrics.csv")
 
 st.write("# Metrics")
 
