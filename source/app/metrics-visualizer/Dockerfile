@@ -10,4 +10,4 @@ RUN pip install -r requirements.txt
 EXPOSE 9090
 ENV DATAFRAME_PATH="data/metrics.csv"
 
-ENTRYPOINT [ "streamlit", "run", "main.py" ]
+ENTRYPOINT [ "streamlit", "run", "main.py", "--server.port 8080", "--server.host 0.0.0.0" ]
