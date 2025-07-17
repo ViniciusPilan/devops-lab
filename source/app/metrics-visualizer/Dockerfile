@@ -1,3 +1,5 @@
+# docker build -t metrics-visualizer:1.0.0 . --no-cache
+
 FROM python:3.12-slim
 
 WORKDIR /app
@@ -7,7 +9,8 @@ ADD ./requirements.txt requirements.txt
 
 RUN pip install -r requirements.txt
 
-EXPOSE 9090
+EXPOSE 8080
+
 ENV DATAFRAME_PATH="data/metrics.csv"
 
-ENTRYPOINT [ "streamlit", "run", "main.py", "--server.port 8080", "--server.host 0.0.0.0" ]
+ENTRYPOINT [ "streamlit", "run", "main.py", "--server.port", "8080", "--server.address", "0.0.0.0" ]
