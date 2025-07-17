@@ -10,7 +10,7 @@ import json
 
 
 BASE_URL = "https://investidor10.com.br/acoes"
-DATA_PATH = "/Users/vinipilan/Documents/monitoramento_bancos/web-scraper/data"
+DATA_PATH = "."
 
 
 def get_codes_list() -> list:
@@ -80,7 +80,7 @@ def save_result_in_json(metrics_list: list):
     Used to save the scraped metrics for each code in a json file.
     """
 
-    with open('../data/metrics.json', 'w', encoding='utf-8') as f:
+    with open('metrics.json', 'w', encoding='utf-8') as f:
         json.dump(metrics_list, f, ensure_ascii=False, indent=4)
 
 
@@ -103,6 +103,9 @@ def main():
         input_file_path = f"{DATA_PATH}/metrics.json",
         output_file_path = f"{DATA_PATH}/metrics.csv"
     )
+
+    send_to_bucket(f"{DATA_PATH}/metrics.csv")
+
 
 
 if __name__ == "__main__":

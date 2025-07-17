@@ -19,6 +19,12 @@ spec:
       containers:
       - image: metrics-visualizer:1.0.0
         name: metrics-visualizer
+        envFrom:
+        - secretRef:
+            name: app-credentials
+        env:
+        - name: BUCKET_HOST
+          value: "minio.minio.svc:9000"
         ports:
         - containerPort: 8080
 status: {}
