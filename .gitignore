@@ -1,1 +1,5 @@
+# To ingore python virtual envs files
 .venv
+
+# To ignore app's secrets
+ops/app/common/app-credentials.yaml
