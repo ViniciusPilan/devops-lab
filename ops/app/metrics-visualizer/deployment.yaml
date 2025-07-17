@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: metrics-visualizer
+  name: metrics-visualizer
+  namespace: app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: metrics-visualizer
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: metrics-visualizer
+    spec:
+      containers:
+      - image: metrics-visualizer:1.0.1
+        imagePullPolicy: Always
+        name: metrics-visualizer
+        ports:
+        - containerPort: 8501
+status: {}

@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app
+  namespace: argocd
+spec:
+  project: default
+  sources:
+    - path: ops/app/common
+      repoURL: https://github.com/ViniciusPilan/devops-lab.git
+      targetRevision: main
+    - path: ops/app/metrics-visualizer
+      repoURL: https://github.com/ViniciusPilan/devops-lab.git
+      targetRevision: main
+  destination:
+    name: "in-cluster"
+    namespace: minio

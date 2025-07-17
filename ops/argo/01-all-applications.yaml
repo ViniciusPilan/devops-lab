@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: all-applications
+  namespace: argocd
+spec:
+  project: default
+  sources:
+    - path: ops/argo/applications
+      repoURL: https://github.com/ViniciusPilan/devops-lab.git
+      targetRevision: main
+  destination:
+    name: "in-cluster"
+    namespace: minio
