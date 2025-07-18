@@ -1,16 +1,19 @@
 # Web scraping from the website INVESTIDOR10.
 
 from bs4 import BeautifulSoup
+from botocore.exceptions import ClientError
 
-import datetime
+import boto3
 import pandas as pd
 import requests
 
-import json
+import datetime
+import json, os
 
 
-BASE_URL = "https://investidor10.com.br/acoes"
 DATA_PATH = "."
+BASE_URL = "https://investidor10.com.br/acoes"
+MINIO_ENDPOINT = os.getenv("MINIO_ENDPOINT")
 
 
 def get_codes_list() -> list:
@@ -20,11 +23,14 @@ def get_codes_list() -> list:
 
     filtered_output = []
 
-    with open(f"{DATA_PATH}/codes.txt", "r") as code_file:
-        code_list = code_file.readlines()
+    # with open(f"{DATA_PATH}/codes.txt", "r") as code_file:
+    #     code_list = code_file.readlines()
     
-    for code in code_list:
-        filtered_output.append(code.replace('\n', '').lower())
+    # for code in code_list:
+    #     filtered_output.append(code.replace('\n', '').lower())
+
+    index_reference = os.getenv("INDEX_LIST")
+    filtered_output = index_reference.split(";")
     
     return filtered_output
 
@@ -89,6 +95,33 @@ def convert_json_to_csv(input_file_path: str, output_file_path: str):
     json_file.to_csv(output_file_path, index=False)
 
 
+def upload_file(file_name, bucket, object_name=None):
+    """Upload a file to an S3 bucket
+
+    :param file_name: File to upload
+    :param bucket: Bucket to upload to
+    :param object_name: S3 object name. If not specified then file_name is used
+    :return: True if file was uploaded, else False
+    """
+
+    # If S3 object_name was not specified, use file_name
+    if object_name is None:
+        object_name = os.path.basename(file_name)
+
+    # Upload the file
+    s3_client = boto3.client(
+        's3',
+        endpoint_url=f'http://{MINIO_ENDPOINT}',
+        region_name='us-east-1' 
+    )
+
+    try:
+        response = s3_client.upload_file(file_name, bucket, object_name)
+    except ClientError as e:
+        print(e)
+        return False
+    return True
+
 def main():
     all_results_list = []
     codes_list = get_codes_list()
@@ -104,8 +137,8 @@ def main():
         output_file_path = f"{DATA_PATH}/metrics.csv"
     )
 
-    send_to_bucket(f"{DATA_PATH}/metrics.csv")
-
+    upload_file(file_name=f"{DATA_PATH}/metrics.csv", bucket="app", object_name="metrics.csv")
+    upload_file(file_name=f"{DATA_PATH}/metrics.json", bucket="app", object_name="metrics.json")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: web-scraper
+  namespace: app
+spec:
+  jobTemplate:
+    metadata:
+      name: web-scraper
+    spec:
+      template:
+        spec:
+          containers:
+          - image: web-scraper:1.0.0
+            name: web-scraper
+            envFrom:
+            - secretRef:
+                name: app-credentials
+            env:
+            - name: INDEX_LIST
+              value: "BBAS3;ITUB4;BBDC4;SANB11;ABCB4;BMGB4;BRSR6;BPAC11;BPAN4"
+            - name: MINIO_ENDPOINT
+              value: "minio.minio.svc:9000"
+          restartPolicy: OnFailure
+  schedule: '0 13 * * *'  # Every day at 13:00h
