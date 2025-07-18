@@ -16,17 +16,17 @@ spec:
       labels:
         app: metrics-visualizer
     spec:
-      # initContainers:
+      initContainers:
+      - image: amazon/aws-cli
+        name: get-dataset
+        envFrom:
+        - secretRef:
+            name: app-credentials
+        command: ["aws", "--endpoint-url", "http://minio.minio.svc:9000", "s3", "cp", "s3://app/metrics.csv", "/app/metrics.csv"]
       # Create a container to get the metrics.csv
       containers:
       - image: metrics-visualizer:1.0.0
         name: metrics-visualizer
-        envFrom:
-        - secretRef:
-            name: app-credentials
-        env:
-        - name: BUCKET_HOST
-          value: "minio.minio.svc:9000"
         ports:
         - containerPort: 8080
 status: {}
