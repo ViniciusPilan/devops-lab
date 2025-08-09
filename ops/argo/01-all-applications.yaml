@@ -4,6 +4,8 @@ metadata:
   name: all-applications
   namespace: argocd
 spec:
+  syncPolicy:
+    automated: {}
   project: default
   sources:
     - path: ops/argo/applications
