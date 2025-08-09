@@ -12,9 +12,9 @@ spec:
     - path: ops/monitoring-stack
       repoURL: https://github.com/ViniciusPilan/devops-lab.git
       targetRevision: main
-    - chart: loki
+    - chart: grafana/loki
       repoURL: https://grafana.github.io/helm-charts
-      targetRevision: 1.16.1
+      targetRevision: 6.35.1
       helm:
         releaseName: loki
         valueFiles:
