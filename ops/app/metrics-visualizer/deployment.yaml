@@ -10,23 +10,22 @@ spec:
   selector:
     matchLabels:
       app: metrics-visualizer
-  strategy: {}
   template:
     metadata:
       labels:
         app: metrics-visualizer
     spec:
-      initContainers:
+      containers:
       - image: amazon/aws-cli
         name: get-dataset
         envFrom:
         - secretRef:
             name: app-credentials
-        command: ["aws", "--endpoint-url", "http://minio.minio.svc:9000", "s3", "cp", "s3://app/metrics.csv", "/app/data/metrics.csv"]
         volumeMounts:
         - name: app-folder
           mountPath: /app/data
-      containers:
+        command: ["/bin/bash", "-c"]
+        args: ["while true; do aws --endpoint-url http://minio.minio.svc:9000 s3 cp s3://app/metrics.csv /app/data/metrics.csv & sleep 3600; done"]
       - image: metrics-visualizer:1.0.0
         name: metrics-visualizer
         env:
@@ -40,4 +39,3 @@ spec:
       volumes:
       - name: app-folder
         emptyDir: {}
-status: {}
