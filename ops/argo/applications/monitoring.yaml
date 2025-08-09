@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: monitoring-stack
+  namespace: argocd
+spec:
+  project: default
+  sources:
+    - repoURL: https://github.com/ViniciusPilan/devops-lab.git
+      targetRevision: main
+      ref: values
+    - path: ops/monitoring-stack
+      repoURL: https://github.com/ViniciusPilan/devops-lab.git
+      targetRevision: main
+    - chart: grafana/loki
+      repoURL: https://grafana.github.io/helm-charts
+      targetRevision: 1.16.1
+      helm:
+        releaseName: loki
+        valueFiles:
+          - $values/ops/monitoring-stack/loki/values.yaml
+  destination:
+    name: "in-cluster"
+    namespace: monitoring
