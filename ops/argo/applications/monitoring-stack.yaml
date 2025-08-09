@@ -12,13 +12,22 @@ spec:
     - path: ops/monitoring-stack
       repoURL: https://github.com/ViniciusPilan/devops-lab.git
       targetRevision: main
-    - chart: loki
-      repoURL: https://grafana.github.io/helm-charts
-      targetRevision: 6.35.1
+    # - chart: loki
+    #   repoURL: https://grafana.github.io/helm-charts
+    #   targetRevision: 6.35.1
+    #   helm:
+    #     releaseName: loki
+    #     valueFiles:
+    #       - $values/ops/monitoring-stack/loki/values.yaml
+    - chart: prometheus-community/kube-prometheus-stack
+      repoURL: https://prometheus-community.github.io/helm-charts
+      targetRevision: 72.4.0
       helm:
-        releaseName: loki
+        releaseName: prometheus
         valueFiles:
-          - $values/ops/monitoring-stack/loki/values.yaml
+          - $values/ops/monitoring-stack/prometheus/values.yaml
+    
+
   destination:
     name: "in-cluster"
     namespace: monitoring
