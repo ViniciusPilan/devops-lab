@@ -19,13 +19,14 @@ spec:
     #     releaseName: loki
     #     valueFiles:
     #       - $values/ops/monitoring-stack/loki/values.yaml
+    # Prometheus Operator
     - chart: kube-prometheus-stack
       repoURL: https://prometheus-community.github.io/helm-charts
       targetRevision: 72.4.0
       helm:
         # releaseName: prometheus
         valueFiles:
-          - $values/ops/monitoring-stack/prometheus/values.yaml
+          - $values/ops/monitoring-stack/prometheus-operator/values.yaml
     
 
   destination:
