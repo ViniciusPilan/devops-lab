@@ -4,6 +4,8 @@
 ##
 namespaceOverride: "monitoring-stack"
 
+fullnameOverride: "prometheus"
+
 ## Install Prometheus Operator CRDs
 ##
 crds:
@@ -1056,7 +1058,7 @@ prometheusOperator:
   enabled: true
 
   ## Use '{{ template "kube-prometheus-stack.fullname" . }}-operator' by default
-  fullnameOverride: ""
+  fullnameOverride: "prometheus"
 
   ## Number of old replicasets to retain ##
   ## The default value is 10, 0 will garbage-collect old replicasets ##
